@@ -1,0 +1,32 @@
+//Requires Processing
+int xScale = 100;
+int yScale = 50;
+int xMargin = 100;
+int yMargin = 100;
+int set[] = new int[]{0,1,1,2,2,2,3,4,4,2,5,8};
+//set[] = new int[]{1,2,2,2,3,4,4,2,5,8};
+void setup() {
+  size(900, 700);
+  background(255);
+}
+
+void draw() {
+  stroke(0, 0, 0);
+  fill(0, 0, 0);
+  line(xMargin, height - yMargin, xMargin, 0);
+  line(xMargin, height - yMargin, width, height - yMargin);
+  
+  graphSet(set, 255, 0, 0);
+  //line();
+}
+
+void graphSet(int[] set, int r, int g, int b){
+  stroke(r, b, g);
+  fill(r, b, g);
+  for(int i = 0; i < set.length; i += 2){
+    ellipse(xMargin + (xScale * set[i]), height- (yMargin + (yScale * set[i+1])), 4.0, 4.0);
+    if(i <= (set.length - 4)){
+      line(xMargin + (xScale * set[i]), height- (yMargin + (yScale * set[i+1])), xMargin + (xScale * set[i+2]), height- (yMargin + (yScale * set[i+3])));      
+    }
+  }
+}
